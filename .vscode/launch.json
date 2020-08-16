@@ -11,14 +11,14 @@
      ],
     "configurations": [
         {
-            "command": "yarn --cwd socketio-hello-world start",
+            "command": "yarn --cwd socketio-hello-world && yarn --cwd socketio-hello-world  start",
             "name": "Web Sockets Node App",
             "request": "launch",
             "type": "node-terminal"
         },
         {
          "name": "Request Body App",
-         "command": "yarn --cwd RequestBodyApp start",
+         "command": "yarn --cwd RequestBodyApp && yarn --cwd RequestBodyApp start",
          "request": "launch",
          "skipFiles": [
              "<node_internals>/**"
