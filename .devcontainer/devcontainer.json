@@ -1,0 +1,5 @@
+
+{
+	"name": "Forwarded ports for apps",
+    "forwardPorts": [3000,5000,7000],
+}
