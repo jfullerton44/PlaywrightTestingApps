@@ -59,9 +59,21 @@ namespace Echo.Controllers
             };
         }
 
+        [HttpGet("/echo2")]
+        public IDictionary<string, string> Post(IDictionary<string, string> body)
+        {
+            var res = new Dictionary<string, string>();
+
+            foreach (var (headerName, values) in Request.Headers)
+            {
+                res.Add($"{headerName}", values.ToString());
+            }
+
+            return res;
+        }
 
         [HttpPost]
-        public IDictionary<string, string> Post(IDictionary<string, string> body)
+        public IDictionary<string, string> GetEcho2(IDictionary<string, string> body)
         {
             var res = new Dictionary<string, string>(body);
 
