@@ -51,11 +51,12 @@ namespace Echo.Controllers
         [HttpGet("~/index")]
         public ContentResult Get1()
         {
+            var str = "<div item=Calling multiple requests to this endpoint> Calling multiple requests to this endpoint </div>";
 
             return new ContentResult
             {
                 ContentType = "text/html",
-                Content = "Calling multiple requests to this endpoint"
+                Content = str
             };
         }
 
