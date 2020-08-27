@@ -4,46 +4,51 @@
     // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
     "version": "0.2.0",
     "compounds": [
-     {
-         "name": "Request Body App/PF Echo (Headers)/Web Sockets Echo App",
-         "configurations": ["PF Echo (Headers)", "Web Sockets Node App", "Request Body App"]
-     }
-     ],
+        {
+            "name": "Request Body App/PF Echo (Headers)/Web Sockets Echo App",
+            "configurations": [
+                "PF Echo (Headers)",
+                "Launch socketio-hello-world",
+                "Launch RequestBodyApp"
+            ]
+        }
+    ],
     "configurations": [
         {
-            "command": "yarn --cwd socketio-hello-world && yarn --cwd socketio-hello-world  start",
-            "name": "Web Sockets Node App",
+            "name": "Launch RequestBodyApp",
+            "type": "node-terminal",
+            "preLaunchTask": "install-deps:RequestBodyApp",
+            "cwd": "${workspaceFolder}/RequestBodyApp",
             "request": "launch",
-            "type": "node-terminal"
+            "command": "yarn start"
         },
         {
-         "name": "Request Body App",
-         "command": "yarn --cwd RequestBodyApp && yarn --cwd RequestBodyApp start",
-         "request": "launch",
-         "skipFiles": [
-             "<node_internals>/**"
-         ],
-         "type": "node-terminal"
-     },
-    {
-        "name": "PF Echo (Headers)",
-        "type": "coreclr",
-        "request": "launch",
-        "preLaunchTask": "build",
-        "program": "${workspaceFolder}/psfecho/Echo/bin/Debug/netcoreapp3.1/Echo.dll",
-        "args": [],
-        "cwd": "${workspaceFolder}",
-        "stopAtEntry": false,
-        "serverReadyAction": {
-            "action": "openExternally",
-            "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            "name": "Launch socketio-hello-world",
+            "type": "node-terminal",
+            "preLaunchTask": "install-deps:socketio-hello-world",
+            "cwd": "${workspaceFolder}/socketio-hello-world",
+            "request": "launch",
+            "command": "yarn start"
         },
-        "env": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-        },
-        "sourceFileMap": {
-            "/Views": "${workspaceFolder}/Views"
+        {
+            "name": "PF Echo (Headers)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/psfecho/Echo/bin/Debug/netcoreapp3.1/Echo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
         }
-    }
-     ]
- }
+    ]
+}

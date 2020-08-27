@@ -37,6 +37,16 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "install-deps:RequestBodyApp",
+            "type": "shell",
+            "command": "yarn --cwd ${workspaceFolder}/RequestBodyApp"
+        },
+        {
+            "label": "install-deps:socketio-hello-world",
+            "type": "shell",
+            "command": "yarn --cwd ${workspaceFolder}/socketio-hello-world"
         }
     ]
 }
